@@ -1,1 +1,1 @@
-This is A streamlit app for Customer Churn EDA Project.
+This is a streamlit app for Customer Churn EDA Project.
