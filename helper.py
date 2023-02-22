@@ -5,7 +5,7 @@ import seaborn as sns
 import streamlit as st
 sns.set()
 
-@st.cache
+@st.cache(allow_output_mutation=True)
 def load_data():
     df = pd.read_csv('Telco-Customer-Churn.csv')
     return df
@@ -26,6 +26,15 @@ def hist(df,col,set_hue=None):
     fig = px.histogram(df,x=col)
     return fig
 
+def churn_rate(df,col):
+    df2 = df
+    df2['Churn'].replace(to_replace = 'Yes', value = 1 , inplace = True)
+    df2['Churn'].replace(to_replace = 'No',  value = 0,  inplace =True)
+    val = df2.groupby([col])['Churn'].mean()
+    fig = px.bar(val,color=val.index,width = 500,height=500)
+    fig.update_layout(xaxis_title = col, yaxis_title = 'Churn Rate')
+    return fig
+    
 
 def show_plots(features):
     df = load_data()
@@ -57,7 +66,11 @@ def show_plots(features):
     #===============================================================
 
 
-
+def plot_churn_rate(features):
+    df = load_data()
+    feature = st.selectbox('**Choose Feature**',tuple(features))
+    fig = churn_rate(df,feature)
+    st.plotly_chart(fig)
 
 
 

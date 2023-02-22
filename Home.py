@@ -13,17 +13,25 @@ st.markdown(dataset, unsafe_allow_html=True)
 st.markdown(kaggle, unsafe_allow_html=True)
 st.markdown(linked, unsafe_allow_html=True)
 st.markdown(github, unsafe_allow_html=True)
+#=====================Conclusion=======================
+st.markdown("## Conclusion")
+
+# Create a bullet list
+st.write("##### Based on Demographic info:")
+st.write("- Gender has no effect on Churn Rate .")
+st.write("- Seniors are more probable to churn with a churn rate of 0.42 while 0.23 for non seniors.")
+st.write("- Customers that don't have partners are more likely to churn with a rate of 0.33.")
+st.write("- Customers that don't have dependents are more likely to churn with a rate of 0.32.")
 
 
+st.write("##### Based on Customr Account info:")
+st.write("- Customers With Month to Month contract are more likely to churn with a churn rate of 0.42.")
+st.write("- Customers that prefer Paperless Billing are more likely to churn 0.33.")
+st.write("- Customers that pay with Electronic Check have a high churn rate 0.44")
+st.write("- The longer the customer stay with the corporation the less the churn rate (low: 0.41).")
+st.write("- The higher the charges the higher the churn rate (high: 0.34).")
 
 
-
-
-
-
-
-
-
-
-
-
+st.write("##### In term of Services:")
+st.write("- Customers using Fiber Optic Have a high churn rate (0.42).")
+st.write("- Customers Using the rest of the services have low churn rates compared to customers who don't.")

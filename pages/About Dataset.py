@@ -11,20 +11,18 @@ st.markdown('''**1. Customers who left within the last month** – Churn column 
 **4. Demographic info about customers** – gender, age range, and if they have partners and dependents.''')
 
 data = helper.load_data() 
-st.error(f'The dataset consist of {data.shape[0]} rows by {data.shape[1]} columns')
-st.warning('Most of the features are categorical except for 3 columns (tenure , MonthlyCharges , TotalCharges)',)
+st.success(f'The dataset consist of {data.shape[0]} rows by {data.shape[1]} columns')
+st.success('Most of the features are categorical except for 3 columns (tenure , MonthlyCharges , TotalCharges)',)
 fig = helper.Pie(data,'Churn')
 st.subheader('Churn Distribution')
 st.plotly_chart(fig)
 
 
-
-
-
-
-
-
-
+st.subheader('Churn Rates')
+features = ['gender','SeniorCitizen','Partner','Dependents','Contract','PaperlessBilling','PaymentMethod','PhoneService','MultipleLines','InternetService'
+        ,'OnlineSecurity','OnlineBackup','DeviceProtection'
+        ,'TechSupport','StreamingTV','StreamingMovies']
+helper.plot_churn_rate(features)
 
 if st.checkbox('Show Data'):
     st.dataframe(data)
