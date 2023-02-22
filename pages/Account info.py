@@ -2,8 +2,8 @@ from helper import show_plots , load_data , hist
 import streamlit as st
 
 df = load_data()
-df_churn = df[ df['Churn']=='Yes' ]
-df_retained = df[ df['Churn']=='No' ]
+df_churn = df[ df['Churn']== 1 ]
+df_retained = df[ df['Churn']== 0 ]
 #==================Categorical Features==========================
 st.header('Account info Analysis')
 st.subheader('Categorical Features')
