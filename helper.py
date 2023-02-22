@@ -5,7 +5,7 @@ import seaborn as sns
 import streamlit as st
 sns.set()
 
-@st.cache
+@st.cache(allow_output_mutation=True)
 def load_data():
     df = pd.read_csv('Telco-Customer-Churn.csv')
     return df
