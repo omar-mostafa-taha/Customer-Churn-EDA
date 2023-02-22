@@ -1,5 +1,5 @@
 import streamlit as st
-import helper 
+from helper import Pie,load_data,plot_churn_rate
 
 st.title('About Dataset')
 
@@ -10,10 +10,10 @@ st.markdown('''**1. Customers who left within the last month** – Churn column 
 \n**3. Customer account information** – how long they’ve been a customer, contract, payment method, paperless billing, monthly charges, and total charges.\n
 **4. Demographic info about customers** – gender, age range, and if they have partners and dependents.''')
 
-data = helper.load_data() 
+data = load_data() 
 st.success(f'The dataset consist of {data.shape[0]} rows by {data.shape[1]} columns')
 st.success('Most of the features are categorical except for 3 columns (tenure , MonthlyCharges , TotalCharges)',)
-fig = helper.Pie(data,'Churn')
+fig = Pie(data,'Churn')
 st.subheader('Churn Distribution')
 st.plotly_chart(fig)
 
@@ -22,7 +22,7 @@ st.subheader('Churn Rates')
 features = ['gender','SeniorCitizen','Partner','Dependents','Contract','PaperlessBilling','PaymentMethod','PhoneService','MultipleLines','InternetService'
         ,'OnlineSecurity','OnlineBackup','DeviceProtection'
         ,'TechSupport','StreamingTV','StreamingMovies']
-helper.plot_churn_rate(features)
+plot_churn_rate(features)
 
 if st.checkbox('Show Data'):
     st.dataframe(data)
