@@ -1,5 +1,5 @@
 import streamlit as st
-from helper import Pie,load_data
+from helper import Pie,load_data , plot_churn_rate
 
 st.title('About Dataset')
 
@@ -18,11 +18,11 @@ st.subheader('Churn Distribution')
 st.plotly_chart(fig)
 
 
-# st.subheader('Churn Rates')
-# features = ['gender','SeniorCitizen','Partner','Dependents','Contract','PaperlessBilling','PaymentMethod','PhoneService','MultipleLines','InternetService'
-#         ,'OnlineSecurity','OnlineBackup','DeviceProtection'
-#         ,'TechSupport','StreamingTV','StreamingMovies']
-# plot_churn_rate(features)
+st.subheader('Churn Rates')
+features = ['gender','SeniorCitizen','Partner','Dependents','Contract','PaperlessBilling','PaymentMethod','PhoneService','MultipleLines','InternetService'
+        ,'OnlineSecurity','OnlineBackup','DeviceProtection'
+        ,'TechSupport','StreamingTV','StreamingMovies']
+plot_churn_rate(features)
 
 if st.checkbox('Show Data'):
     st.dataframe(data)
