@@ -5,11 +5,9 @@ import seaborn as sns
 import streamlit as st
 sns.set()
 
-@st.cache(allow_output_mutation=True)
+@st.cache
 def load_data():
     df = pd.read_csv('Telco-Customer-Churn.csv')
-    df['Churn'].replace(to_replace = 'Yes', value = 1 , inplace = True)
-    df['Churn'].replace(to_replace = 'No',  value = 0,  inplace =True)
     return df
 
 def count(df,col,set_hue=None):
@@ -29,7 +27,10 @@ def hist(df,col,set_hue=None):
     return fig
 
 def churn_rate(df,col):
-    val = df.groupby([col])['Churn'].mean()
+    df2 = df.copy()
+    df2['Churn'].replace(to_replace = 'Yes', value = 1 , inplace = True)
+    df2['Churn'].replace(to_replace = 'No',  value = 0,  inplace =True)
+    val = df2.groupby([col])['Churn'].mean()
     fig = px.bar(val,color=val.index,width = 500,height=500)
     fig.update_layout(xaxis_title = col, yaxis_title = 'Churn Rate')
     return fig
